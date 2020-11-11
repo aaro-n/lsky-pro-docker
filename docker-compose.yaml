@@ -1,0 +1,17 @@
+version: '3'
+services:
+  chevereto:
+    image: nmtan/chevereto:installer
+    container_name: lsky-pro
+    restart: always
+    ports:
+      - 8080:80
+#    extra_hosts:
+#      - admin.admin.admin:172.17.0.1
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./html:/var/www/html
+      - ./apache2/mods-enabled/remoteip.load:/etc/apache2/mods-enabled/remoteip.load
+      - ./apache2/sites-available/000-default.conf:/etc/apache2/sites-available/000-default.conf
+      - ./apache2/sites-available/000-default.conf:/etc/apache2/sites-enabled/000-default.conf
